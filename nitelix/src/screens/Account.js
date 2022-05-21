@@ -4,6 +4,7 @@ import {
   Dimensions,
   ImageBackground,
   StyleSheet,
+  Image,
   Text,
   View,
 } from 'react-native';
@@ -11,8 +12,12 @@ import Header from '../components/Header';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AuthContext} from '../context/AuthContext';
+import AccountIcon from '../assets/Icons/accountIcon.png';
+import HistoryIcon from '../assets/Icons/historyIcon.png';
+import logoutIcon from '../assets/Icons/logoutIcon.png';
+import MissedIcon from '../assets/Icons/missedIcon.png';
+import Background from '../assets/Icons/background.png';
 
-const image = {uri: 'https://reactjs.org/logo-og.png'};
 
 const PageContainer = styled.View`
   background-color: white;
@@ -57,7 +62,7 @@ const CardContainer = styled.TouchableOpacity`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #bfbfbf;
+  background: rgba(81, 89, 101, 0.1);
   width: 170px;
   height: 180px;
   border-radius: 12px;
@@ -85,7 +90,7 @@ export default function Account({navigation}) {
   return (
     <View style={{display: 'flex'}}>
       <ImageBackground
-        source={image}
+        source={Background}
         resizeMode="cover"
         style={{height: win.height, width: win.width}}>
         <Header
@@ -103,7 +108,7 @@ export default function Account({navigation}) {
             <CardList>
               <CardContainer
                 onPress={() => navigation.navigate('SystemSettings')}>
-                <Icon name="user" color="#122e70" size={50} />
+                <Image source={AccountIcon} />
                 <CardTitle>Sistem Ayarları</CardTitle>
                 <CardDesc>
                   Detaylı raporlama için internet sitesinden giriş
@@ -111,7 +116,7 @@ export default function Account({navigation}) {
                 </CardDesc>
               </CardContainer>
               <CardContainer onPress={() => navigation.navigate('CallHistory')}>
-                <Icon name="phone" color="#122e70" size={50} />
+                <Image source={HistoryIcon} />
                 <CardTitle>Arama Geçmişim</CardTitle>
                 <CardDesc>
                   Detaylı raporlama için internet sitesinden giriş
@@ -120,15 +125,15 @@ export default function Account({navigation}) {
               </CardContainer>
 
               <CardContainer onPress={() => navigation.navigate('MissedCalls')}>
-                <Icon name="volume-control-phone" color="#122e70" size={50} />
+                <Image source={MissedIcon} />
                 <CardTitle>Cevapsız Çağrılar</CardTitle>
                 <CardDesc>
                   Detaylı raporlama için internet sitesinden giriş
                   yapabilirsiniz
                 </CardDesc>
               </CardContainer>
-              <CardContainer onPress={logout} >
-                <Icon name="remove" color="red" size={55} />
+              <CardContainer onPress={logout}>
+                <Image source={logoutIcon} />
                 <CardTitle>Oturumu Kapat</CardTitle>
                 <CardDesc>Hesabımdan çıkış yap</CardDesc>
               </CardContainer>

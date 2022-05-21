@@ -30,6 +30,8 @@ import TelephonePassiveIcon from '../assets/Icons/telefonePassiveIcon.png';
 import AccountPassiveIcon from '../assets/Icons/AccountPassiveIcon.png';
 
 
+
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
