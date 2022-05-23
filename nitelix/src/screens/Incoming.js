@@ -17,9 +17,9 @@ import AccountIcon from '../assets/Icons/accountIcon.png';
 import HistoryIcon from '../assets/Icons/historyIcon.png';
 import logoutIcon from '../assets/Icons/logoutIcon.png';
 import MissedIcon from '../assets/Icons/missedIcon.png';
-import Background from '../assets/Icons/background.png';
 
 
+import CallBackground from '../assets/Icons/callBackground.png';
 
 
 export default function Incoming({navigation}) {
@@ -31,39 +31,39 @@ export default function Incoming({navigation}) {
 
 // Create our JsSIP instance and run it:
 
-var socket = new JsSIP.WebSocketInterface('wss://sip.myhost.com');
-var configuration = {
-  sockets  : [ socket ],
-  uri      : 'sip:alice@example.com',
-  password : 'superpassword'
-};
+// var socket = new JsSIP.WebSocketInterface('wss://sip.myhost.com');
+// var configuration = {
+//   sockets  : [ socket ],
+//   uri      : 'sip:alice@example.com',
+//   password : 'superpassword'
+// };
 
-var ua = new JsSIP.UA(configuration);
+// var ua = new JsSIP.UA(configuration);
 
-ua.start();
+// ua.start();
 
-// Register callbacks to desired call events
-var eventHandlers = {
-  'progress': function(e) {
-    console.log('call is in progress');
-  },
-  'failed': function(e) {
-    console.log('call failed with cause: '+ e.data.cause);
-  },
-  'ended': function(e) {
-    console.log('call ended with cause: '+ e.data.cause);
-  },
-  'confirmed': function(e) {
-    console.log('call confirmed');
-  }
-};
+// // Register callbacks to desired call events
+// var eventHandlers = {
+//   'progress': function(e) {
+//     console.log('call is in progress');
+//   },
+//   'failed': function(e) {
+//     console.log('call failed with cause: '+ e.data.cause);
+//   },
+//   'ended': function(e) {
+//     console.log('call ended with cause: '+ e.data.cause);
+//   },
+//   'confirmed': function(e) {
+//     console.log('call confirmed');
+//   }
+// };
 
-var options = {
-  'eventHandlers'    : eventHandlers,
-  'mediaConstraints' : { 'audio': true, 'video': true }
-};
+// var options = {
+//   'eventHandlers'    : eventHandlers,
+//   'mediaConstraints' : { 'audio': true, 'video': true }
+// };
 
-var session = ua.call('sip:bob@example.com', options);
+// var session = ua.call('sip:bob@example.com', options);
 
 
 
@@ -90,7 +90,7 @@ var session = ua.call('sip:bob@example.com', options);
   return (
     <View style={{display: 'flex'}}>
       <ImageBackground
-        source={Background}
+        source={CallBackground}
         resizeMode="cover"
         style={{height: win.height, width: win.width}}>
      
