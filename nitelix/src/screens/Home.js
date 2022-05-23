@@ -17,6 +17,11 @@ import MissedCalls from './MissedCalls';
 import SystemSettings from './SystemSettings';
 import CallHistory from './CallHistory';
 import SplashScreen from './/SplashScreen';
+import Call from './Call';
+import Dial from './Dial';
+import Transfer from './Transfer';
+import Incoming from './Incoming';
+
 
 import DashboardActiveIcon from '../assets/Icons/dashboardActiveIcon.png';
 import MPanosuActiveIcon from '../assets/Icons/mesguliyetpanosuActiveicon.png';
@@ -93,8 +98,7 @@ export default function Home() {
               }}
             />
             <Tab.Screen
-              name="Telephone"
-              component={Telephone}
+              name="Telephonee"
               options={{
                 tabBarButton: props => (
                   <TabComponent
@@ -104,14 +108,27 @@ export default function Home() {
                     {...props}
                   />
                 ),
-              }}
-            />
+              }}>
+              {() => (
+                <HomeStack.Navigator
+                  name="Telephone"
+                  component={Telephone}
+                  screenOptions={{headerShown: false}}>
+                  <HomeStack.Screen name="Telephone" component={Telephone} />
+
+                  <HomeStack.Screen name="Call" component={Call} />
+                  <HomeStack.Screen name="Dial" component={Dial} />
+                  <HomeStack.Screen name="Incoming" component={Incoming} />
+                  <HomeStack.Screen name="Transfer" component={Transfer} />
+                </HomeStack.Navigator>
+              )}
+            </Tab.Screen>
             <Tab.Screen
               name="Accountt"
               options={{
                 tabBarButton: props => (
                   <TabComponent
-                    label="Account"
+                    label="Hesabım"
                     iconname={AccountActiveIcon}
                     piconname={AccountPassiveIcon}
                     {...props}

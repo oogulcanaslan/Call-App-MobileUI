@@ -35,12 +35,15 @@ export default function MPanosu() {
   //Üstteki nitelix,kısa kod ve tümü gibi filtreleri tutacak hooks.Ekran ilk açıldığında tümü listeleneceği için ilk değeri Tümü ayarlandı
   const [filterData, setFilterData] = React.useState('Tümü');
   //Kullanıcı arama yaptığındaki text bu değişkene konuyor.İlk değeri boş string
-  const [searchText, setSearchText] = React.useState('');
+  const [searchText, setSearchText] = React.useState(null);
+  const [searchTextFinal, setSearchTextFinal] = React.useState(null);
   //Fetch edilen data buraya konuyor.
   const [dataList, setDataList] = React.useState('');
 
   const [filterGroup, setFilterGroup] = React.useState('');
   const [loading, setLoading] = React.useState(true);
+
+
 
   let x = dataList.length;
 
@@ -87,7 +90,7 @@ export default function MPanosu() {
     width: 82%;
   `;
 
-  const SearchIconBg = styled.View`
+  const SearchIconBg = styled.TouchableOpacity`
     display: flex;
     background-color: "rgba(42,82,152,0.3)";
     height: 45px;
@@ -185,8 +188,13 @@ export default function MPanosu() {
         });
       console.log(filterGroup);
     };
+
+
+    
     InternalList();
   }, [filterData, searchText]);
+
+
 
   // Çekilen dataList DATA arrayinin data elemanı olarak verildi
   const DATA = [
@@ -207,6 +215,37 @@ export default function MPanosu() {
       />
     </>
   );
+
+
+// const onSubmit=(text)=>{
+//   setSearchText(text)
+
+// }
+
+  // const searchFilterFunction = text => {
+  //   // Check if searched text is not blank
+  //   if (text) {
+  //     // Inserted text is not blank
+  //     // Filter the masterDataSource and update FilteredDataSource
+  //     const newData = masterDataSource.filter(function (item) {
+  //       // Applying filter for the inserted text in search bar
+  //       const itemData = item.title
+  //         ? item.title.toUpperCase()
+  //         : ''.toUpperCase();
+  //       const textData = text.toUpperCase();
+  //       return itemData.indexOf(textData) > -1;
+  //     });
+  //     setDataList(newData);
+  //     setSearch(text);
+  //   } else {
+  //     // Inserted text is blank
+  //     // Update FilteredDataSource with masterDataSource
+  //     setFilteredDataSource(masterDataSource);
+  //     setSearch(text);
+  //   }
+  // };
+
+
   //Ekranın yükseklik ve genişlik değeri
   const win = Dimensions.get('window');
   return (
@@ -220,10 +259,7 @@ export default function MPanosu() {
           subtitle={dataList.length + ' Dahili'}
           onPressBack={() => navigation.goBack()}
         />
-        <SafeAreaView
-          style={{
-            flex: 1,
-          }}>
+      
           <PageContainer>
             {loading == false ? (
               <View>
@@ -297,7 +333,10 @@ export default function MPanosu() {
               </View>
             )}
           </PageContainer>
-        </SafeAreaView>
+      
+      
+
+      
       </ImageBackground>
     </View>
   );

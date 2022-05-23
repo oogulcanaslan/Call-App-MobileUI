@@ -28,10 +28,14 @@ display: ${props => (props.focused ? 'flex' : 'none')};
 const Wrapper = styled.TouchableWithoutFeedback``;
 
 
-function Tab({label,iconname,piconname, accessibilityState, onPress}) {
+function Tab({label,iconname,piconname, accessibilityState, onPress,bool}) {
       const focused = accessibilityState.selected;
   return (
-    <Wrapper
+    <>
+    {
+      bool!="true"  ? (
+
+<Wrapper
       onPress={() => {
         onPress();
       }}>
@@ -46,6 +50,13 @@ function Tab({label,iconname,piconname, accessibilityState, onPress}) {
         </IconText>
       </Container>
     </Wrapper>
+      ):(<></>)
+    }
+    
+
+</>
+
+
   );
 }
 

@@ -1,4 +1,4 @@
-import React, {useRef,useContext, useEffect} from 'react';
+import React, {useRef, useContext, useEffect} from 'react';
 import styled from 'styled-components/native';
 import {
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   TextInput,
   SafeAreaView,
   Image,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../constants/Colors';
@@ -19,27 +19,25 @@ import {AuthContext} from '../context/AuthContext';
 import publicIP from 'react-native-public-ip';
 // import Background from '../assets/mona_lisa.jpg'
 
-const image = {uri: 'https://reactjs.org/logo-og.png'};
-
+import Background from '../assets/Icons/background.png';
 
 function Login() {
   //Kullanıcı girişi için hookslar.
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [companyNum, setCompanyNum] = React.useState('');
- 
+
   //Auth context'in içerisindeki login fonksiyonunu kullanacağımızı belirtiyoruz.
   const {isLoading, login} = useContext(AuthContext);
 
   const win = Dimensions.get('window');
 
-  
-  const signin=true;
+  const signin = false;
 
   return (
     <View style={{display: 'flex'}}>
       <ImageBackground
-        source={image}
+        source={Background}
         resizeMode="cover"
         imageStyle={{opacity: 1}}
         style={{height: win.height, width: win.width}}>
@@ -48,7 +46,7 @@ function Login() {
           <Text style={styles.companyTitle}>Çağrı Merkezi Yönetim Sistemi</Text>
         </View>
         {/* //Giriş başarılıysa yönlendirilicek.Başarısızsa hata mesajı çıkıcak */}
-        {signin ? (
+        {signin == false ? (
           <>
             <View style={styles.textboxContainer}>
               <View style={styles.inputContainer1}>
@@ -99,13 +97,15 @@ function Login() {
             </View>
             <View style={styles.signOutButtonContainer}>
               <TouchableOpacity style={styles.button}>
-                <Text>Çıkış Yap</Text>
+                <Text style={{color: 'rgba(42,82,152,1)', fontWeight: 'bold'}}>
+                  Çıkış Yap
+                </Text>
               </TouchableOpacity>
             </View>
           </>
         )}
         <View style={styles.versionContainer}>
-          <Text style={styles.versionText}>V:1.0.1247</Text>
+          <Text style={styles.versionText}>V:1.0.1.247</Text>
         </View>
       </ImageBackground>
     </View>
@@ -136,11 +136,14 @@ const styles = StyleSheet.create({
   },
   versionText: {
     color: 'white',
+    fontSize:20,
+
+    
   },
   companyName: {
     color: 'white',
     fontSize: 42,
-    
+
     fontWeight: '800',
   },
   companyTitle: {
@@ -150,7 +153,8 @@ const styles = StyleSheet.create({
   },
   signInText: {
     fontSize: 16,
-    color: '#2A5298',
+    color: 'rgba(42,82,152,1)',
+    fontWeight: 'bold',
   },
   button: {
     display: 'flex',
@@ -177,10 +181,11 @@ const styles = StyleSheet.create({
     marginRight: 25,
   },
   versionContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    flex: 1,
+    bottom: 50,
+    position: 'absolute',
+    flexDirection: 'column',
+    marginLeft:'38%',
+
   },
   inputContainer1: {
     marginLeft: 25,
@@ -191,7 +196,7 @@ const styles = StyleSheet.create({
   warningContainer: {
     marginLeft: 25,
     marginRight: 25,
-    backgroundColor: 'grey',
+    backgroundColor: 'rgba(255,255,255,0.1)',
     borderRadius: 10,
     marginTop: 60,
     alignItems: 'center',

@@ -109,7 +109,9 @@ const PageContainer = styled.View`
   border-radius: 30px;
 `;
 
-export default function Telephone() {
+export default function Telephone({navigation}) {
+  
+
   //Telefon numarasının tutulduğu yer
   const [phoneText, setPhoneText] = React.useState('Telefon Numarası');
 
@@ -231,8 +233,8 @@ export default function Telephone() {
               </ButtonWrapper>
             </ButtonHorizontal>
           </ButtonContainer>
-          <CallButtonListWrapper>
-            <CallButtonWrapper>
+          <CallButtonListWrapper >
+            <CallButtonWrapper onPress={() => navigation.navigate('Incoming')}>
               <Image source={whitePhoneIcon} style={{marginLeft: 15}} />
               <CallTitleWrapper>
                 <CallButtonSubTitle>Hat 1</CallButtonSubTitle>
@@ -240,7 +242,9 @@ export default function Telephone() {
               </CallTitleWrapper>
             </CallButtonWrapper>
 
-            <CallButtonWrapper style={{marginLeft: 8}}>
+            <CallButtonWrapper
+              style={{marginLeft: 8}}
+              onPress={() => navigation.navigate('Call')}>
               <Image source={whitePhoneIcon} style={{marginLeft: 15}} />
               <CallTitleWrapper>
                 <CallButtonSubTitle>Hat 2</CallButtonSubTitle>
