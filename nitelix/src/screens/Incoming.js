@@ -17,15 +17,10 @@ import AccountIcon from '../assets/Icons/accountIcon.png';
 import HistoryIcon from '../assets/Icons/historyIcon.png';
 import logoutIcon from '../assets/Icons/logoutIcon.png';
 import MissedIcon from '../assets/Icons/missedIcon.png';
-
-
 import CallBackground from '../assets/Icons/callBackground.png';
 
 
 export default function Incoming({navigation}) {
-
-
-
 
   const win = Dimensions.get('window');
   const {userInfo, isLoading, logout} = useContext(AuthContext);
@@ -36,9 +31,6 @@ export default function Incoming({navigation}) {
         source={CallBackground}
         resizeMode="cover"
         style={{height: win.height, width: win.width}}>
-     
-
-
 
           <Text>Incoming</Text>
     
