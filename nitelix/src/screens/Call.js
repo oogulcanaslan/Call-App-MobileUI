@@ -113,8 +113,8 @@ export default function Call({navigation}) {
         style={{height: win.height, width: win.width}}>
         <ProfileImageWrapper>
           <ProfileImage source={CallProfileIcon} />
-          <NameText>ALİ MERT (Sıjı)</NameText>
-          <TimeText>00:31</TimeText>
+          <NameText>ALİ MERT</NameText>
+          <TimeText>00:30</TimeText>
         </ProfileImageWrapper>
 
         <ButtonWrapper>
